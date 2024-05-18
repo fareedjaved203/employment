@@ -1,8 +1,18 @@
-import { Inter } from "next/font/google";
+import { Poppins, Noto_Sans_Arabic } from "next/font/google";
 import "./globals.css";
 import Layout from "@/components/shared/Layout";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700", "800", "900"],
+  variable: "--font-poppins",
+});
+
+const noto_sans_arabic = Noto_Sans_Arabic({
+  subsets: ["arabic"],
+  weight: ["300", "400", "500", "700", "800", "900"],
+  variable: "--font-noto-sans-arabic",
+});
 
 export const metadata = {
   title: "Employment",
@@ -12,8 +22,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Layout>{children}</Layout>
+      <body className={`${poppins.variable} ${noto_sans_arabic.variable}`}>
+        <main>{children}</main>
       </body>
     </html>
   );

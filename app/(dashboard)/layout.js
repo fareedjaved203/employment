@@ -1,4 +1,4 @@
-import CurrentDate from "./CurrentDate";
+import CurrentDate from "@/components/shared/CurrentDate";
 import Image from "next/image";
 import { BiSolidDashboard } from "react-icons/bi";
 import { MdPersonSearch } from "react-icons/md";
