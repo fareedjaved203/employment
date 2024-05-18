@@ -1,12 +1,11 @@
-import { Button } from "@/components/ui/button";
+import LoginForm from "@/components/LoginForm";
 import React from "react";
 
 const LoginPage = () => {
   return (
-    <div>
-      LoginPage
-      <Button>Add</Button>
-    </div>
+    <>
+      <LoginForm />
+    </>
   );
 };
 
