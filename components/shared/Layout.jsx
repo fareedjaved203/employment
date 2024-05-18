@@ -1,5 +1,10 @@
 import CurrentDate from "./CurrentDate";
 import Image from "next/image";
+import { BiSolidDashboard } from "react-icons/bi";
+import { MdPersonSearch } from "react-icons/md";
+import { FaHandshakeSimple } from "react-icons/fa6";
+import { IoMdHelpCircle } from "react-icons/io";
+import { IoArrowBack } from "react-icons/io5";
 
 const Layout = ({ children }) => {
   return (
@@ -7,72 +12,54 @@ const Layout = ({ children }) => {
       <div class="flex h-screen bg-gray-100 text-black">
         {/* <!-- sidebar --> */}
         <div class="hidden md:flex flex-col w-64 bg-white">
-          <div class="flex items-center justify-center h-20">
+          <div class="flex items-center justify-start px-4 mx-4 h-20">
+            <Image
+              src={`/users-group-two-rounded_svgrepo.com.svg`}
+              width={30}
+              height={30}
+              alt="logo"
+            />
             <span class="font-bold uppercase">Employment</span>
           </div>
           <div class="flex flex-col flex-1 overflow-y-auto">
             <nav class="flex-1 px-2 py-4 bg-white">
               <a
                 href="#"
-                class="flex items-center justify-center px-4 py-2 text-pinkColor bg-pinkBackground rounded-md py-3 mx-4 hover:bg-pink-400"
+                class="flex items-center justify-start px-4 py-2 text-pinkColor rounded-md py-3 my-4 mx-4 hover:bg-pinkBackground focus:bg-pinkBackground"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 mr-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
+                <BiSolidDashboard className="text-2xl" />
                 Dashboard
               </a>
               <a
                 href="#"
-                class="flex items-center justify-center px-4 py-2 text-pinkColor bg-pinkBackground rounded-md py-3 mx-4 hover:bg-pink-400"
+                class="flex items-center justify-start px-4 py-2 text-pinkColor rounded-md py-3 my-4 mx-4 hover:bg-pinkBackground focus:bg-pinkBackground"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 mr-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
+                <MdPersonSearch className="text-2xl" />
                 Job Seekers
               </a>
               <a
                 href="#"
-                class="flex items-center justify-center px-4 py-2 text-pinkColor bg-pinkBackground rounded-md py-3 mx-4 hover:bg-pink-400"
+                class="flex items-center justify-start px-4 py-2 text-pinkColor rounded-md py-3 my-4 mx-4 hover:bg-pinkBackground focus:bg-pinkBackground"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 mr-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
+                <FaHandshakeSimple className="text-2xl" />
                 Sponsors
               </a>
+              <hr className="mx-4" />
+              <a
+                href="#"
+                class="flex items-center justify-start px-4 py-2 text-pinkColor rounded-md py-3 my-4 mx-4 hover:bg-pinkBackground focus:bg-pinkBackground"
+              >
+                <IoMdHelpCircle className="text-2xl" />
+                Help
+              </a>
             </nav>
+            <a
+              href="#"
+              class="flex items-center justify-start px-4 py-2 text-pinkColor rounded-md py-3 my-4 mx-4 hover:bg-pinkBackground focus:bg-pinkBackground"
+            >
+              <IoArrowBack className="text-2xl" />
+              Logout
+            </a>
           </div>
         </div>
 
