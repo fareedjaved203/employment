@@ -104,7 +104,7 @@ const Layout = ({ children }) => {
               />
             </div>
           </div>
-          <div class="p-4 content-body h-screen">{children}</div>
+          <div class="p-4 pb-0 content-body">{children}</div>
         </div>
       </div>
       ;
