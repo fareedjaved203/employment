@@ -2,13 +2,16 @@ import Image from "next/image";
 
 const Stats = () => {
   return (
-    <div className="mt-4 p-4 font-mulish" style={{ backgroundColor: "white" }}>
+    <div
+      className="mt-4 p-4 font-mulish text-center sm:text-start"
+      style={{ backgroundColor: "white" }}
+    >
       <div className="pb-1" style={{ fontSize: "28px", fontWeight: "900" }}>
         Statistics
       </div>
       <div className="flex flex-col sm:flex-row space-x-2">
         <div
-          className="bg-gray-100 rounded-lg flex flex-row items-center m-1 rounded justify-start p-2"
+          className="bg-gray-100 rounded-lg flex flex-col sm:flex-row items-center m-1 rounded justify-start p-2"
           style={{ backgroundColor: "#D3175233" }}
         >
           <Image
@@ -16,12 +19,13 @@ const Stats = () => {
             width={40}
             height={40}
             alt="logo icon"
-            priority={false}
+            className="mx-2 my-4 sm:my-0"
           />
           <div className="flex flex-col w-[65%] px-2">
             <div className="text-sm" style={{ color: "#333333" }}>
               Max Earnings (month)
             </div>
+
             <div
               className="text-lg break-words"
               style={{ fontWeight: 400, color: "#00261C" }}
@@ -31,7 +35,7 @@ const Stats = () => {
           </div>
         </div>
         <div
-          className="bg-green-200 rounded-lg flex flex-col sm:flex-row m-1 rounded justify-start items-center p-2"
+          className="bg-green-200 rounded-lg flex flex-col sm:flex-row m-1 rounded justify-start items-center p-2 sm:pr-4"
           style={{ backgroundColor: "#00DEA333" }}
         >
           <Image
