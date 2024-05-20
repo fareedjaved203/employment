@@ -67,7 +67,10 @@ const HamBurgerMenu = () => {
                 Employment
               </span>
             </div>
-            <div className="flex flex-col flex-1 overflow-y-auto">
+            <div
+              className="flex flex-col flex-1 overflow-y-auto"
+              style={{ fontSize: "15px" }}
+            >
               <nav className="flex-1 px-2 py-4 bg-white">
                 <Link
                   href="/"

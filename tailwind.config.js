@@ -6,6 +6,11 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      poppins: ["var(--font-poppins)"],
+      notoSansArabic: ["var(--font-noto-sans-arabic)"],
+      mulish: ["var(--font-mulish)"],
+    },
     colors: {
       pinkBackground: {
         DEFAULT: "#D3175233",

@@ -11,9 +11,9 @@ import HamBurgerMenu from "@/components/shared/HamBurgerMenu";
 const Layout = ({ children }) => {
   return (
     <>
-      <div class="flex h-screen font-noto-sans-arabic">
+      <div class="flex h-screen font-mulish">
         {/* <!-- sidebar --> */}
-        <div class="hidden md:flex flex-col w-64 bg-white">
+        <div class="hidden md:flex flex-col w-64 bg-white text-sm">
           <div class="flex items-center justify-start px-4 mx-4 h-20 mt-10">
             <Image
               src={`/users-group-two-rounded_svgrepo.com.svg`}
@@ -22,37 +22,45 @@ const Layout = ({ children }) => {
               alt="logo"
               className="ml-1"
             />
-            <span class="font-bold uppercase ml-2 text-black">Employment</span>
+            <span
+              class="font-bold ml-2 text-black"
+              style={{ fontSize: "21px" }}
+            >
+              Employment
+            </span>
           </div>
-          <div class="flex flex-col flex-1 overflow-y-auto">
+          <div
+            class="flex flex-col flex-1 overflow-y-auto"
+            style={{ fontSize: "15px" }}
+          >
             <nav class="flex-1 px-2 py-4 bg-white">
               <Link
                 href="/"
                 class="flex items-center justify-start px-4 py-2 text-lightGray rounded-md py-3 my-4 mx-4 hover:bg-pinkBackground hover:text-pinkColor focus:bg-pinkBackground focus:text-pinkColor"
               >
-                <BiSolidDashboard className="text-2xl mr-3" />
+                <BiSolidDashboard className="text-xl mr-3" />
                 Dashboard
               </Link>
               <Link
                 href="/job-seekers"
                 class="flex items-center justify-start px-4 py-2 text-lightGray rounded-md py-3 my-4 mx-4 hover:bg-pinkBackground hover:text-pinkColor focus:bg-pinkBackground focus:text-pinkColor"
               >
-                <MdPersonSearch className="text-2xl mr-3" />
+                <MdPersonSearch className="text-xl mr-3" />
                 Job Seekers
               </Link>
               <Link
                 href="/sponsors"
                 class="flex items-center justify-start px-4 py-2 text-lightGray rounded-md py-3 my-4 mx-4 hover:bg-pinkBackground hover:text-pinkColor focus:bg-pinkBackground focus:text-pinkColor"
               >
-                <FaHandshakeSimple className="text-2xl mr-3" />
+                <FaHandshakeSimple className="text-xl mr-3" />
                 Sponsors
               </Link>
               <hr className="mx-4" />
               <Link
                 href="/"
-                class="flex items-center justify-start px-4 py-2 text-lightGray rounded-md py-3 my-4 mx-4 hover:bg-pinkBackground hover:text-pinkColor focus:bg-pinkBackground focus:text-pinkColor"
+                class="text-md flex items-center justify-start px-4 py-2 text-lightGray rounded-md py-3 my-4 mx-4 hover:bg-pinkBackground hover:text-pinkColor focus:bg-pinkBackground focus:text-pinkColor"
               >
-                <IoMdHelpCircle className="text-2xl mr-3" />
+                <IoMdHelpCircle className="text-xl mr-3" />
                 Help
               </Link>
             </nav>
@@ -77,7 +85,7 @@ const Layout = ({ children }) => {
             </div>
             <div class="flex items-center pr-4 text-black">
               <span
-                className="mr-4 font-poppins"
+                className="mr-4"
                 style={{
                   fontSize: "16px",
                   fontWeight: 600,
