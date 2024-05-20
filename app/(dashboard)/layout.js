@@ -6,11 +6,12 @@ import { FaHandshakeSimple } from "react-icons/fa6";
 import { IoMdHelpCircle } from "react-icons/io";
 import { IoArrowBack } from "react-icons/io5";
 import Link from "next/link";
+import HamBurgerMenu from "@/components/shared/HamBurgerMenu";
 
 const Layout = ({ children }) => {
   return (
     <>
-      <div class="flex h-screen bg-gray-100 font-noto-sans-arabic">
+      <div class="flex h-screen font-noto-sans-arabic">
         {/* <!-- sidebar --> */}
         <div class="hidden md:flex flex-col w-64 bg-white">
           <div class="flex items-center justify-start px-4 mx-4 h-20 mt-10">
@@ -69,23 +70,7 @@ const Layout = ({ children }) => {
         <div class="flex flex-col flex-1 overflow-y-auto">
           <div class="flex items-center justify-between h-16 bg-white">
             <div class="flex items-center px-4">
-              <button class="md:hidden text-gray-500 focus:outline-none focus:text-gray-700">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              </button>
-
+              <HamBurgerMenu />
               <span className="hidden md:block">
                 <CurrentDate />
               </span>
@@ -111,7 +96,7 @@ const Layout = ({ children }) => {
               />
             </div>
           </div>
-          <div class="p-4">{children}</div>
+          <div class="p-4 content-body h-screen">{children}</div>
         </div>
       </div>
       ;
