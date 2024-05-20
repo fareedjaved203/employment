@@ -44,7 +44,7 @@ const LoginForm = () => {
 
   return (
     <>
-      <div className=" h-screen w-full flex flex-col md:flex-row h-screen items-center justify-center">
+      <div className=" h-screen w-full flex flex-col md:flex-row h-screen items-center justify-center font-mulish">
         <div className="w-full h-full relative hidden md:block">
           <Image
             src="/image 15.svg"
@@ -68,7 +68,6 @@ const LoginForm = () => {
                   priority={false}
                 />
                 <span
-                  className="font-mulish"
                   style={{
                     fontWeight: 800,
                     fontSize: "32.36px",
@@ -79,7 +78,7 @@ const LoginForm = () => {
                 </span>
               </div>
               <div
-                className="font-poppins my-3 pt-4"
+                className="my-3 pt-4"
                 style={{
                   color: "rgba(0, 0, 0, 0.5)",
                   fontSize: "16px",
@@ -101,7 +100,7 @@ const LoginForm = () => {
                 Sign in
               </div>
             </div>
-            <div className="flex flex-col items-start mt-8 font-poppins">
+            <div className="flex flex-col items-start mt-8">
               <label
                 htmlFor="email"
                 className="mb-2"
@@ -131,7 +130,7 @@ const LoginForm = () => {
                 Password
                 <a
                   href="/forgot-password"
-                  className="hover:underline font-poppins"
+                  className="hover:underline"
                   style={{
                     color: "rgba(0, 0, 0, 1)",
                     opacity: "50%",
