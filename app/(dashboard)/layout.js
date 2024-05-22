@@ -11,7 +11,7 @@ import HamBurgerMenu from "@/components/shared/HamBurgerMenu";
 const Layout = ({ children }) => {
   return (
     <>
-      <div class="flex h-screen font-mulish">
+      <div class="flex h-[95vh] font-mulish">
         {/* <!-- sidebar --> */}
         <div class="hidden md:flex flex-col w-64 bg-white text-sm">
           <div class="flex items-center justify-start px-4 mx-4 h-20 mt-10">

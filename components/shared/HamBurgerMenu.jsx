@@ -40,8 +40,12 @@ const HamBurgerMenu = () => {
       </button>
       {isSidebarVisible && (
         <div
-          className="fixed top-0 left-0 h-screen md:hidden shadow-xl"
-          style={{ zIndex: "1", backgroundColor: "white" }}
+          className="fixed top-0 left-0 h-screen md:hidden"
+          style={{
+            zIndex: 1,
+            backgroundColor: "white",
+            boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)",
+          }}
         >
           <div
             className={

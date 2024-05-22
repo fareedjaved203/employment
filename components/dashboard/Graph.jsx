@@ -37,7 +37,7 @@ const Graph = () => {
   ]);
 
   return (
-    <div style={{ backgroundColor: "white" }}>
+    <div style={{ backgroundColor: "white" }} className="p-0 sm:p-4">
       <div className="flex flex-col sm:flex-row justify-between p-4 font-mulish">
         <div className="flex flex-col sm:flex-row justify-between w-full">
           <div
@@ -51,15 +51,7 @@ const Graph = () => {
 
       <div>
         <ResponsiveContainer width="100%" height={300}>
-          <BarChart
-            data={data}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
-          >
+          <BarChart data={data}>
             <XAxis
               dataKey="name"
               axisLine={false}
