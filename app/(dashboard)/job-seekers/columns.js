@@ -1,4 +1,15 @@
 "use client";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { MoreHorizontal } from "lucide-react";
+import { CiCircleChevDown } from "react-icons/ci";
 
 export const columns = [
   {
@@ -27,12 +38,29 @@ export const columns = [
   },
   {
     accessorKey: "Actions",
-    header: "Actions",
-    cell: (data) => (
-      <div className="flex items-center">
-        <button onClick={() => handleViewDetails(data)}>View Details</button>
-        <button onClick={() => handleDeleteUser(data)}>Delete User</button>
-      </div>
-    ),
+    cell: ({ row }) => {
+      const payment = row.original;
+
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="h-8 w-8 p-0">
+              <CiCircleChevDown className="text-3xl" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="px-4 ">
+            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <hr class="py-2 border-t-1" style={{ borderColor: "#CCCCCD" }} />
+            <Button
+              className="bg-[#D3175233] px-8 rounded-md my-2"
+              style={{ color: "#D31752" }}
+            >
+              Delete User
+            </Button>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      );
+    },
   },
 ];
