@@ -39,7 +39,7 @@ export const columns = [
   {
     accessorKey: "Actions",
     cell: ({ row }) => {
-      const payment = row.original;
+      // console.log(row.original);
 
       return (
         <DropdownMenu>
@@ -48,12 +48,25 @@ export const columns = [
               <CiCircleChevDown className="text-3xl" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="px-4 ">
+          <DropdownMenuContent align="end" className="px-4">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <hr class="py-2 border-t-1" style={{ borderColor: "#CCCCCD" }} />
+            <hr
+              className="pt-2 border-t-1 block w-full"
+              style={{ borderColor: "#CCCCCD" }}
+            />
             <Button
-              className="bg-[#D3175233] px-8 rounded-md my-2"
+              className="bg-[#E7E7E7] rounded-md mb-2 w-full"
+              style={{ color: "black" }}
+            >
+              View more details
+            </Button>
+            <hr
+              className="pt-2 border-t-1 block w-full"
+              style={{ borderColor: "#CCCCCD" }}
+            />
+            <Button
+              className="bg-[#D3175233] w-full rounded-md mb-2"
               style={{ color: "#D31752" }}
             >
               Delete User
