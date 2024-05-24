@@ -1,5 +1,4 @@
 "use client";
-import DetailsModal from "@/components/DetailsModal";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -55,11 +54,7 @@ export const columns = [
           <DropdownMenuContent align="end" className="px-4">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <hr
-              className="pt-2 border-t-1 block w-full"
-              style={{ borderColor: "#CCCCCD" }}
-            />
-            <DetailsModal />
+
             <hr
               className="pt-2 border-t-1 block w-full"
               style={{ borderColor: "#CCCCCD" }}

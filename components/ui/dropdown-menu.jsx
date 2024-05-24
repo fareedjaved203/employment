@@ -56,7 +56,7 @@ const DropdownMenuContent = React.forwardRef(
   ({ className, sideOffset = 4, ...props }, ref) => (
     <DropdownMenuPrimitive.Portal>
       <DropdownMenuPrimitive.Content
-        style={{ backgroundColor: "white" }}
+        style={{ backgroundColor: "white", border: "1px solid #DADADC" }}
         ref={ref}
         sideOffset={sideOffset}
         className={cn(

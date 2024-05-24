@@ -23,7 +23,7 @@ const data = [
   // Add more objects as needed
 ];
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 60; i++) {
   const newObject = {
     PID: data.length + 1,
     Name: "New Person " + (i + 1),
@@ -38,7 +38,7 @@ for (let i = 0; i < 10; i++) {
 function DemoPage() {
   return (
     <div
-      className="container mx-auto py-7 rounded-xl pl-6"
+      className="container mx-auto py-7 rounded-xl pl-6 mb-4"
       style={{ backgroundColor: "white" }}
     >
       <div

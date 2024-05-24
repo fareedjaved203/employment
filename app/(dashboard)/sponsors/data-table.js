@@ -156,7 +156,7 @@ function DataTable({ columns, data }) {
         </Table>
       </div>
       <div className="flex items-center justify-between py-4">
-        <div>Total job seekers: {data?.length}</div>
+        <div>Total sponsors: {data?.length}</div>
         <div className="flex justify-center items-center space-x-4">
           {/* <Pagination>
             <PaginationContent>
