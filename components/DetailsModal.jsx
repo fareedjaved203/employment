@@ -25,7 +25,7 @@ const DetailsModal = () => {
         style={{ backgroundColor: "white" }}
       >
         <DialogHeader className={`flex justify-center items-center py-4 pt-8`}>
-          <DialogTitle>Job Seeker's Detail</DialogTitle>
+          <DialogTitle>Job Seeker&#39;s Detail</DialogTitle>
         </DialogHeader>
         <div className="overflow-x-auto px-4 mb-3">
           <div className="shadow-xl">
