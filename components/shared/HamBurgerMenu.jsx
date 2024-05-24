@@ -11,10 +11,15 @@ import Link from "next/link";
 
 const HamBurgerMenu = () => {
   const [isSidebarVisible, setSidebarVisibility] = useState(false);
+  const [activeLink, setActiveLink] = useState("dashboard");
 
   const toggleSidebar = () => {
     console.log("hello");
     setSidebarVisibility(!isSidebarVisible);
+  };
+
+  const handleLinkClick = (link) => {
+    setActiveLink(link);
   };
 
   return (
@@ -78,21 +83,36 @@ const HamBurgerMenu = () => {
               <nav className="flex-1 px-2 py-4 bg-white">
                 <Link
                   href="/"
-                  className="flex items-center justify-start px-4 py-2 text-lightGray rounded-md py-3 my-4 mx-4 hover:bg-pinkBackground hover:text-pinkColor focus:bg-pinkBackground focus:text-pinkColor"
+                  className={`flex items-center justify-start px-4 py-2 text-lightGray rounded-md py-3 my-4 mx-4 hover:bg-pinkBackground hover:text-pinkColor focus:bg-pinkBackground focus:text-pinkColor ${
+                    activeLink === "dashboard"
+                      ? "bg-pinkBackground text-pinkColor"
+                      : ""
+                  }`}
+                  onClick={() => handleLinkClick("dashboard")}
                 >
                   <BiSolidDashboard className="text-2xl mr-3" />
                   Dashboard
                 </Link>
                 <Link
                   href="/job-seekers"
-                  className="flex items-center justify-start px-4 py-2 text-lightGray rounded-md py-3 my-4 mx-4 hover:bg-pinkBackground hover:text-pinkColor focus:bg-pinkBackground focus:text-pinkColor"
+                  className={`flex items-center justify-start px-4 py-2 text-lightGray rounded-md py-3 my-4 mx-4 hover:bg-pinkBackground hover:text-pinkColor focus:bg-pinkBackground focus:text-pinkColor ${
+                    activeLink === "job-seekers"
+                      ? "bg-pinkBackground text-pinkColor"
+                      : ""
+                  }`}
+                  onClick={() => handleLinkClick("job-seekers")}
                 >
                   <MdPersonSearch className="text-2xl mr-3" />
                   Job Seekers
                 </Link>
                 <Link
                   href="/sponsors"
-                  className="flex items-center justify-start px-4 py-2 text-lightGray rounded-md py-3 my-4 mx-4 hover:bg-pinkBackground hover:text-pinkColor focus:bg-pinkBackground focus:text-pinkColor"
+                  className={`flex items-center justify-start px-4 py-2 text-lightGray rounded-md py-3 my-4 mx-4 hover:bg-pinkBackground hover:text-pinkColor focus:bg-pinkBackground focus:text-pinkColor ${
+                    activeLink === "sponsors"
+                      ? "bg-pinkBackground text-pinkColor"
+                      : ""
+                  }`}
+                  onClick={() => handleLinkClick("sponsors")}
                 >
                   <FaHandshakeSimple className="text-2xl mr-3" />
                   Sponsors
@@ -100,7 +120,12 @@ const HamBurgerMenu = () => {
                 <hr className="mx-4" />
                 <Link
                   href="/"
-                  className="flex items-center justify-start px-4 py-2 text-lightGray rounded-md py-3 my-4 mx-4 hover:bg-pinkBackground hover:text-pinkColor focus:bg-pinkBackground focus:text-pinkColor"
+                  className={`flex items-center justify-start px-4 py-2 text-lightGray rounded-md py-3 my-4 mx-4 hover:bg-pinkBackground hover:text-pinkColor focus:bg-pinkBackground focus:text-pinkColor ${
+                    activeLink === "help"
+                      ? "bg-pinkBackground text-pinkColor"
+                      : ""
+                  }`}
+                  onClick={() => handleLinkClick("dashboard")}
                 >
                   <IoMdHelpCircle className="text-2xl mr-3" />
                   Help
