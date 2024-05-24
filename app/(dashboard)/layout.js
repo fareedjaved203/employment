@@ -1,12 +1,9 @@
 import CurrentDate from "@/components/shared/CurrentDate";
 import Image from "next/image";
-import { BiSolidDashboard } from "react-icons/bi";
-import { MdPersonSearch } from "react-icons/md";
-import { FaHandshakeSimple } from "react-icons/fa6";
-import { IoMdHelpCircle } from "react-icons/io";
 import { IoArrowBack } from "react-icons/io5";
 import Link from "next/link";
 import HamBurgerMenu from "@/components/shared/HamBurgerMenu";
+import Sidebar from "@/components/dashboard/SidebarItems";
 
 const Layout = ({ children }) => {
   return (
@@ -33,40 +30,10 @@ const Layout = ({ children }) => {
             class="flex flex-col flex-1 overflow-y-auto"
             style={{ fontSize: "15px" }}
           >
-            <nav class="flex-1 px-2 py-4 bg-white">
-              <Link
-                href="/"
-                class="flex items-center justify-start px-4 py-2 text-lightGray rounded-md py-3 my-4 mx-4 hover:bg-pinkBackground hover:text-pinkColor focus:bg-pinkBackground focus:text-pinkColor"
-              >
-                <BiSolidDashboard className="text-xl mr-3" />
-                Dashboard
-              </Link>
-              <Link
-                href="/job-seekers"
-                class="flex items-center justify-start px-4 py-2 text-lightGray rounded-md py-3 my-4 mx-4 hover:bg-pinkBackground hover:text-pinkColor focus:bg-pinkBackground focus:text-pinkColor"
-              >
-                <MdPersonSearch className="text-xl mr-3" />
-                Job Seekers
-              </Link>
-              <Link
-                href="/sponsors"
-                class="flex items-center justify-start px-4 py-2 text-lightGray rounded-md py-3 my-4 mx-4 hover:bg-pinkBackground hover:text-pinkColor focus:bg-pinkBackground focus:text-pinkColor"
-              >
-                <FaHandshakeSimple className="text-xl mr-3" />
-                Sponsors
-              </Link>
-              <hr className="mx-4" />
-              <Link
-                href="/"
-                class="text-md flex items-center justify-start px-4 py-2 text-lightGray rounded-md py-3 my-4 mx-4 hover:bg-pinkBackground hover:text-pinkColor focus:bg-pinkBackground focus:text-pinkColor"
-              >
-                <IoMdHelpCircle className="text-xl mr-3" />
-                Help
-              </Link>
-            </nav>
+            <Sidebar />
             <Link
               href="/auth/login"
-              class="flex items-center justify-start px-4 py-2 text-pinkColor rounded-md py-3 my-4 mx-4 ml-7 hover:bg-pinkBackground hover:text-pinkColor focus:bg-pinkBackground focus:text-pinkColor"
+              class="flex items-center justify-start font-bold px-4 py-2 text-pinkColor rounded-md py-3 my-4 mx-4 ml-7 hover:bg-pinkBackground hover:text-pinkColor focus:bg-pinkBackground focus:text-pinkColor"
             >
               <IoArrowBack className="mr-3 " />
               Logout

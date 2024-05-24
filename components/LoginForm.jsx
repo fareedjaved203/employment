@@ -16,6 +16,7 @@ const LoginForm = () => {
   const [loading, setLoading] = useState(false);
 
   const login = async () => {
+    router.push("/");
     // if (!password || !email) {
     //   return messageApi.error("Please fill all fields");
     // }

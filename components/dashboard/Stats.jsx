@@ -9,9 +9,9 @@ const Stats = () => {
       <div className="pb-1" style={{ fontSize: "28px", fontWeight: "900" }}>
         Statistics
       </div>
-      <div className="flex flex-col sm:flex-row space-x-2">
+      <div className="flex flex-col sm:flex-row space-x-2 w-[100%] md:w-[60vw]">
         <div
-          className="bg-gray-100 rounded-lg flex flex-col sm:flex-row items-center m-1 rounded justify-start p-2"
+          className="md:w-[50%] bg-gray-100 rounded-lg flex flex-col sm:flex-row items-center m-1 rounded justify-start p-2"
           style={{ backgroundColor: "#D3175233" }}
         >
           <Image
@@ -35,7 +35,7 @@ const Stats = () => {
           </div>
         </div>
         <div
-          className="bg-green-200 rounded-lg flex flex-col sm:flex-row m-1 rounded justify-start items-center p-2 sm:pr-4"
+          className="md:w-[50%] bg-green-200 rounded-lg flex flex-col sm:flex-row m-1 rounded justify-start items-center p-2 sm:pr-4"
           style={{ backgroundColor: "#00DEA333" }}
         >
           <Image
@@ -59,7 +59,7 @@ const Stats = () => {
           </div>
         </div>
         <div
-          className="bg-orange-100 rounded-lg flex flex-col sm:flex-row m-1 rounded justify-start items-center p-2"
+          className="md:w-[50%] bg-orange-100 rounded-lg flex flex-col sm:flex-row m-1 rounded justify-start items-center p-2"
           style={{ backgroundColor: "#FFEBD4" }}
         >
           <Image
