@@ -9,6 +9,7 @@ import {
   Rectangle,
   ResponsiveContainer,
 } from "recharts";
+import MyDropdownMenu from "../shared/DropDown";
 
 const CustomBar = (props) => {
   const borderRadius = 8;
@@ -40,11 +41,16 @@ const Graph = () => {
     <div style={{ backgroundColor: "white" }} className="p-0 sm:p-4">
       <div className="flex flex-col sm:flex-row justify-between p-4 font-mulish">
         <div className="flex flex-col sm:flex-row justify-between w-full">
-          <div
-            className="pb-1 mr-4 font-mulish"
-            style={{ fontSize: "28px", fontWeight: "900" }}
-          >
-            Earnings
+          <div className="flex justify-center items-center">
+            <div
+              className="pb-1 mr-4 font-mulish"
+              style={{ fontSize: "28px", fontWeight: "900" }}
+            >
+              Earnings
+            </div>
+            <div>
+              <MyDropdownMenu />
+            </div>
           </div>
         </div>
       </div>
