@@ -11,22 +11,24 @@ module.exports = {
       notoSansArabic: ["var(--font-noto-sans-arabic)"],
       mulish: ["var(--font-mulish)"],
     },
-    colors: {
-      pinkBackground: {
-        DEFAULT: "#D3175233",
+    extend: {
+      colors: {
+        pinkTest: "#D3175233",
+        pinkBackground: {
+          DEFAULT: "#D3175233",
+        },
+        pinkColor: {
+          DEFAULT: "#D31752",
+        },
+        lightGray: {
+          DEFAULT: "#A1A0BD",
+        },
       },
-      pinkColor: {
-        DEFAULT: "#D31752",
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
-      lightGray: {
-        DEFAULT: "#A1A0BD",
-      },
-    },
-
-    backgroundImage: {
-      "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-      "gradient-conic":
-        "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
     },
   },
   plugins: [],

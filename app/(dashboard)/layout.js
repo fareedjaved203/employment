@@ -8,10 +8,10 @@ import Sidebar from "@/components/dashboard/SidebarItems";
 const Layout = ({ children }) => {
   return (
     <>
-      <div class="flex h-[95vh] font-mulish">
+      <div className="flex h-[95vh] font-mulish ">
         {/* <!-- sidebar --> */}
-        <div class="hidden md:flex flex-col w-64 bg-white text-sm">
-          <div class="flex items-center justify-start px-4 mx-4 h-20 mt-10">
+        <div className="hidden md:flex flex-col w-64 bg-white text-sm md:fixed z-10">
+          <div className="flex items-center justify-start px-4 mx-4 h-20 mt-10">
             <Image
               src={`/users-group-two-rounded_svgrepo.com.svg`}
               width={30}
@@ -20,20 +20,20 @@ const Layout = ({ children }) => {
               className="ml-1"
             />
             <span
-              class="font-bold ml-2 text-black"
+              className="font-bold ml-2 text-black"
               style={{ fontSize: "21px" }}
             >
               Employment
             </span>
           </div>
           <div
-            class="flex flex-col flex-1 overflow-y-auto"
+            className="flex flex-col flex-1 overflow-y-auto"
             style={{ fontSize: "15px" }}
           >
             <Sidebar />
             <Link
               href="/auth/login"
-              class="flex items-center justify-start font-bold px-4 py-2 text-pinkColor rounded-md py-3 my-4 mx-4 ml-7 hover:bg-pinkBackground hover:text-pinkColor focus:bg-pinkBackground focus:text-pinkColor"
+              className="flex items-center justify-start font-bold px-4 py-2 text-pinkColor rounded-md py-3 my-4 mx-4 ml-7 hover:bg-pinkBackground hover:text-pinkColor focus:bg-pinkBackground focus:text-pinkColor"
             >
               <IoArrowBack className="mr-3 " />
               Logout
@@ -42,15 +42,15 @@ const Layout = ({ children }) => {
         </div>
 
         {/* <!-- Main content --> */}
-        <div class="flex flex-col flex-1 overflow-y-auto">
-          <div class="flex items-center justify-between h-16 bg-white">
-            <div class="flex items-center px-4">
+        <div className="flex flex-col flex-1 max-w-full ">
+          <div className="flex items-center justify-between h-16 bg-white">
+            <div className="flex items-center px-4">
               <HamBurgerMenu />
-              <span className="hidden md:block">
+              <span className="hidden md:block md:ml-64">
                 <CurrentDate />
               </span>
             </div>
-            <div class="flex items-center pr-4 text-black">
+            <div className="flex items-center pr-4 text-black">
               <span
                 className="mr-4"
                 style={{
@@ -71,7 +71,7 @@ const Layout = ({ children }) => {
               />
             </div>
           </div>
-          <div class="p-4 pb-0 content-body">{children}</div>
+          <div className="p-4 pb-0 content-body md:ml-64">{children}</div>
         </div>
       </div>
       ;

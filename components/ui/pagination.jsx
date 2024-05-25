@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
-
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 
@@ -29,7 +29,8 @@ const PaginationItem = React.forwardRef(({ className, ...props }, ref) => (
 PaginationItem.displayName = "PaginationItem";
 
 const PaginationLink = ({ className, isActive, size = "icon", ...props }) => (
-  <a
+  <Link
+    scroll={false}
     aria-current={isActive ? "page" : undefined}
     className={cn(
       buttonVariants({
@@ -47,10 +48,11 @@ const PaginationPrevious = ({ className, ...props }) => (
   <PaginationLink
     aria-label="Go to previous page"
     size="default"
-    className={cn("gap-1 pl-2.5", className)}
+    className={cn("   border border-[#DCE4E8] rounded-lg", className)}
     {...props}
   >
-    <ChevronLeft className="h-6 w-6 border border-1" />
+    <ChevronLeft className="h-5 w-5" />
+    {/* <span>Previous</span> */}
   </PaginationLink>
 );
 PaginationPrevious.displayName = "PaginationPrevious";
@@ -59,30 +61,18 @@ const PaginationNext = ({ className, ...props }) => (
   <PaginationLink
     aria-label="Go to next page"
     size="default"
-    className={cn("gap-1 pr-2.5", className)}
+    className={cn("gap-1  border  border-[#DCE4E8] rounded-lg", className)}
     {...props}
   >
-    <ChevronRight className="h-6 w-6 border border-1" />
+    {/* <span>Next</span> */}
+    <ChevronRight className="h-5 w-5" />
   </PaginationLink>
 );
 PaginationNext.displayName = "PaginationNext";
 
-const PaginationEllipsis = ({ className, ...props }) => (
-  <span
-    aria-hidden
-    className={cn("flex h-9 w-9 items-center justify-center", className)}
-    {...props}
-  >
-    <MoreHorizontal className="h-4 w-4" />
-    <span className="sr-only">More pages</span>
-  </span>
-);
-PaginationEllipsis.displayName = "PaginationEllipsis";
-
 export {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
