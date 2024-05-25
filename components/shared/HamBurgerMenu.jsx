@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { BiSolidDashboard } from "react-icons/bi";
 import { MdPersonSearch } from "react-icons/md";
@@ -11,10 +11,9 @@ import Link from "next/link";
 
 const HamBurgerMenu = () => {
   const [isSidebarVisible, setSidebarVisibility] = useState(false);
-  const [activeLink, setActiveLink] = useState("dashboard");
+  const [activeLink, setActiveLink] = useState("");
 
   const toggleSidebar = () => {
-    console.log("hello");
     setSidebarVisibility(!isSidebarVisible);
   };
 

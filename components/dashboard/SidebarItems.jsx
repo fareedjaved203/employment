@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { BiSolidDashboard } from "react-icons/bi";
 import { MdPersonSearch } from "react-icons/md";
@@ -7,7 +7,7 @@ import { FaHandshakeSimple } from "react-icons/fa6";
 import { IoMdHelpCircle } from "react-icons/io";
 
 const Sidebar = () => {
-  const [activeLink, setActiveLink] = useState("dashboard");
+  const [activeLink, setActiveLink] = useState("");
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
