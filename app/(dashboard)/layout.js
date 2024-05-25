@@ -8,9 +8,9 @@ import Sidebar from "@/components/dashboard/SidebarItems";
 const Layout = ({ children }) => {
   return (
     <>
-      <div className="flex h-[95vh] font-mulish ">
+      <div className="flex h-[100vh] font-mulish ">
         {/* <!-- sidebar --> */}
-        <div className="hidden md:flex flex-col w-64 bg-white text-sm md:fixed z-10">
+        <div className="hidden md:flex flex-col w-64 bg-white text-sm md:fixed z-10 h-full">
           <div className="flex items-center justify-start px-4 mx-4 h-20 mt-10">
             <Image
               src={`/users-group-two-rounded_svgrepo.com.svg`}
@@ -27,13 +27,13 @@ const Layout = ({ children }) => {
             </span>
           </div>
           <div
-            className="flex flex-col flex-1 overflow-y-auto"
+            className="flex flex-col flex-1 overflow-y-auto justify-between h-full"
             style={{ fontSize: "15px" }}
           >
             <Sidebar />
             <Link
               href="/auth/login"
-              className="flex items-center justify-start font-bold px-4 py-2 text-pinkColor rounded-md py-3 my-4 mx-4 ml-7 hover:bg-pinkBackground hover:text-pinkColor focus:bg-pinkBackground focus:text-pinkColor"
+              className="flex items-center justify-start font-bold px-4 py-2 text-pinkColor my-6 rounded-md py-3 mx-4 ml-7 hover:bg-pinkBackground hover:text-pinkColor focus:bg-pinkBackground focus:text-pinkColor"
             >
               <IoArrowBack className="mr-3 " />
               Logout
@@ -55,7 +55,7 @@ const Layout = ({ children }) => {
                 className="mr-4"
                 style={{
                   fontSize: "16px",
-                  fontWeight: 600,
+                  fontWeight: 500,
                   paddingRight: "5px",
                 }}
               >
