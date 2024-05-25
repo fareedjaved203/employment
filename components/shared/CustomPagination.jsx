@@ -38,7 +38,7 @@ const CustomPagination = ({
                   href={`?page=${index + 1}`}
                   isActive={index + 1 === CurentPage}
                   className={
-                    index + 1 == CurentPage ? "bg-pinkTest text-black" : ""
+                    index + 1 == CurentPage ? "bg-pinkColor text-white" : ""
                   }
                 >
                   {index + 1}

@@ -78,12 +78,12 @@ function DataTable({ columns, data, pagination, title }) {
         </Table>
       </div>
       <div className="flex items-center justify-between py-4">
-        <div className="flex-1">
+        <div className="flex-1 text-sm" style={{ fontWeight: "500" }}>
           {title}: {pagination?.totalRecords}
         </div>
         <div className="flex-1 flex justify-end items-center space-x-4">
-          <div className="">
-            {pagination.pageNo} of {pagination.totalPages} pages
+          <div className="hidden md:block text-xs">
+            {pagination.pageNo}-{pagination.totalPages} pages
           </div>
           <div className="">
             <CustomPagination
