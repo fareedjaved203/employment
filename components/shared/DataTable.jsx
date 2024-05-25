@@ -27,7 +27,7 @@ function DataTable({ columns, data, pagination, title }) {
 
   return (
     <section className="w-full overflow-hidden no-scroll">
-      <div style={{ backgroundColor: "white" }}>
+      <div style={{ backgroundColor: "white" }} className="pr-2 md:pr-4">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -77,7 +77,7 @@ function DataTable({ columns, data, pagination, title }) {
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-between py-4">
+      <div className="flex items-center justify-between py-4 pr-2 md:pr-4">
         <div className="flex-1 text-sm" style={{ fontWeight: "500" }}>
           {title}: {pagination?.totalRecords}
         </div>

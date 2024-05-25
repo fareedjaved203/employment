@@ -14,7 +14,7 @@ const DetailsModal = () => {
     <Dialog>
       <DialogTrigger asChild>
         <Button
-          className="bg-[#E7E7E7] rounded-md mb-2 w-full"
+          className="bg-[#E7E7E7] rounded-md mb-2 py-4 w-full"
           style={{ color: "black" }}
         >
           View more details

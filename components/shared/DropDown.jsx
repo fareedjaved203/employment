@@ -31,9 +31,24 @@ const MyDropdownMenu = () => {
           onValueChange={setPosition}
           className="p-2"
         >
-          <DropdownMenuRadioItem value="weekly">Weekly</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="monthly">Monthly</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="yearly">Yearly</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem
+            className="outline-none cursor-pointer"
+            value="weekly"
+          >
+            Weekly
+          </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem
+            className="outline-none cursor-pointer"
+            value="monthly"
+          >
+            Monthly
+          </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem
+            className="outline-none cursor-pointer"
+            value="yearly"
+          >
+            Yearly
+          </DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>
