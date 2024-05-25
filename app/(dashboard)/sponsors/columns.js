@@ -28,16 +28,12 @@ export const columns = [
     header: "Ph. no/Watsapp",
   },
   {
-    accessorKey: "Nationality",
-    header: "Nationality",
+    accessorKey: "People_Hired",
+    header: "People Hired",
   },
   {
-    accessorKey: "Place_of_Residence",
-    header: "Place of Residence",
-  },
-  {
-    accessorKey: "NOTTP",
-    header: "NOTTP",
+    accessorKey: "Commision_Paid",
+    header: "Commision Paid",
   },
   {
     accessorKey: "Actions",
