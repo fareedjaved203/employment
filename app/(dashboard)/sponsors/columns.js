@@ -47,7 +47,7 @@ export const columns = [
               <CiCircleChevDown className="text-3xl" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="px-4">
+          <DropdownMenuContent align="end" className="px-4 bg-white shadow-lg">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
 
