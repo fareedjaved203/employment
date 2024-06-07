@@ -2,45 +2,42 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-// import { loginUserApi } from "@/api/auth/authApi";
-// import { useDispatch } from "react-redux";
-// import { onLogin } from "../store/slices/userSlice";
-// import { createUser } from "@/app/actions/cookies";
+import { doSignInWithEmailAndPassword } from "@/firebase/auth";
+import toast from "react-hot-toast";
 
 const LoginForm = () => {
   const router = useRouter();
   //   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  //   const [messageApi, contextHolder] = message.useMessage();
   const [loading, setLoading] = useState(false);
 
   const login = async () => {
-    router.push("/");
-    // if (!password || !email) {
-    //   return messageApi.error("Please fill all fields");
-    // }
-    // setLoading(true);
-    // try {
-    //   const data = await loginUserApi({ email, password });
-    //   if (data.success) {
-    //     const user = {
-    //       ...data.user,
-    //       token: data.accessToken,
-    //     };
-    //     createUser(user);
-    //     messageApi.success(data?.message);
-    //     dispatch(onLogin(data));
-    //     setTimeout(() => {
-    //       router.push("/");
-    //     }, 500);
-    //   } else {
-    //     messageApi.error(data?.message);
-    //   }
-    // } catch (error) {
-    //   messageApi.error("Incorrect details");
-    // }
-    // setLoading(false);
+    if (!password || !email) {
+      return messageApi.error("Please fill all fields");
+    }
+    setLoading(true);
+    try {
+      const data = await doSignInWithEmailAndPassword(email, password);
+      if (data) {
+        // const user = {
+        //   ...data.user,
+        //   token: data.accessToken,
+        // };
+        // createUser(user);
+        // messageApi.success(data?.message);
+        // dispatch(onLogin(data));
+        toast.success("user logged in");
+        setTimeout(() => {
+          router.push("/");
+        }, 500);
+      } else {
+        messageApi.error(data?.message);
+      }
+    } catch (error) {
+      messageApi.error("Incorrect details");
+    }
+    setLoading(false);
   };
 
   return (

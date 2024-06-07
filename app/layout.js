@@ -1,4 +1,5 @@
 import { Poppins, Noto_Sans_Arabic, Mulish } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
         className={`${poppins.variable} ${notoSansArabic.variable} ${mulish.variable}`}
       >
         <main>{children}</main>
+        <Toaster />
       </body>
     </html>
   );
