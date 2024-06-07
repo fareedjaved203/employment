@@ -1,21 +1,19 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDRw6vHccsGeLfTaogAKThOzr9jmQ4zbpo",
-  authDomain: "arabic-talent-acquisition-app.firebaseapp.com",
-  projectId: "arabic-talent-acquisition-app",
-  storageBucket: "arabic-talent-acquisition-app.appspot.com",
-  messagingSenderId: "912103494460",
-  appId: "1:912103494460:web:e73f0fdd4175c8ced3c439",
-  measurementId: "G-0X2SY6QLTW",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
-export { app, analytics, auth };
+export { app, auth };

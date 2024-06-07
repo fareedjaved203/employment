@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { BiSolidDashboard } from "react-icons/bi";
 import { MdPersonSearch } from "react-icons/md";
@@ -7,6 +7,7 @@ import { FaHandshakeSimple } from "react-icons/fa6";
 import { IoMdHelpCircle } from "react-icons/io";
 import { IoArrowBack } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const HamBurgerMenu = () => {
@@ -19,6 +20,12 @@ const HamBurgerMenu = () => {
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
+  };
+
+  const router = useRouter();
+  const logout = async () => {
+    await doSignOut();
+    router.push("/auth/login");
   };
 
   return (
@@ -130,13 +137,13 @@ const HamBurgerMenu = () => {
                   Help
                 </Link>
               </nav>
-              <Link
-                href="/auth/login"
+              <div
                 className="flex items-center justify-start px-4 py-2 text-pinkColor rounded-md my-16 py-3 mx-4 ml-7 hover:bg-pinkBackground hover:text-pinkColor focus:bg-pinkBackground focus:text-pinkColor"
+                onClick={logout}
               >
                 <IoArrowBack className="mr-3 " />
                 Logout
-              </Link>
+              </div>
             </div>
           </div>
         </div>

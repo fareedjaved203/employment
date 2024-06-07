@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { doSignInWithEmailAndPassword } from "@/firebase/auth";
 import toast from "react-hot-toast";
+import { createUser } from "@/app/actions/cookies";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -14,28 +15,28 @@ const LoginForm = () => {
 
   const login = async () => {
     if (!password || !email) {
-      return messageApi.error("Please fill all fields");
+      return toast.error("Please fill all fields");
     }
     setLoading(true);
     try {
       const data = await doSignInWithEmailAndPassword(email, password);
+      console.log(data);
       if (data) {
-        // const user = {
-        //   ...data.user,
-        //   token: data.accessToken,
-        // };
-        // createUser(user);
-        // messageApi.success(data?.message);
+        const user = {
+          email: data.user.email,
+          token: data.user?.accessToken,
+        };
+        createUser(user);
         // dispatch(onLogin(data));
         toast.success("user logged in");
         setTimeout(() => {
           router.push("/");
         }, 500);
       } else {
-        messageApi.error(data?.message);
+        toast.error("Incorrect email/password");
       }
     } catch (error) {
-      messageApi.error("Incorrect details");
+      toast.error("Incorrect email/password");
     }
     setLoading(false);
   };
