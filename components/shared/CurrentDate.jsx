@@ -33,7 +33,7 @@ const CurrentDate = () => {
   return (
     <>
       <div className="flex flex-col text-black">
-        <div className="font-bold text-lg">Fareed</div>
+        <div className="font-bold text-lg">Admin</div>
         <div
           className="font-poppins"
           style={{ color: "#707EAE", fontSize: "11px" }}

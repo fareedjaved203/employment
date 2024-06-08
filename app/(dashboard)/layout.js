@@ -52,7 +52,7 @@ const Layout = ({ children }) => {
                   paddingRight: "5px",
                 }}
               >
-                Fareed Javed
+                Admin
               </span>
               <Image
                 src={"/Rectangle 338.svg"}
