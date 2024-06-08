@@ -17,33 +17,35 @@ export const columns = [
     accessorKey: "PID",
     header: "PID",
     cell: (row) => {
-      return <span style={{ color: "#808080" }}>#{row?.row?.id}</span>;
+      return (
+        <span style={{ color: "#808080" }}>#{Number(row?.row?.id) + 1}</span>
+      );
     },
   },
   {
-    accessorKey: "Name",
+    accessorKey: "username",
     header: "Name",
   },
   {
-    accessorKey: "Ph_no_Watsapp",
+    accessorKey: "phoneNumber",
     header: "Ph. no/Watsapp",
   },
   {
-    accessorKey: "Nationality",
+    accessorKey: "nationality",
     header: "Nationality",
   },
   {
-    accessorKey: "Place_of_Residence",
+    accessorKey: "placeOfResidence",
     header: "Place of Residence",
   },
   {
-    accessorKey: "NOTTP",
+    accessorKey: "numberOfTimesTransferredPreviously",
     header: "NOTTP",
   },
   {
     accessorKey: "Actions",
     cell: ({ row }) => {
-      // console.log(row.original);
+      console.log(row.original);
 
       return (
         <DropdownMenu>
@@ -59,7 +61,7 @@ export const columns = [
               className="pt-2 border-t-1 block w-full"
               style={{ borderColor: "#CCCCCD" }}
             />
-            <DetailsModal />
+            <DetailsModal data={row?.original} />
             <hr
               className="pt-2 border-t-1 block w-full"
               style={{ borderColor: "#CCCCCD" }}

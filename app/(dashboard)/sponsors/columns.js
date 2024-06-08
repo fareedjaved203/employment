@@ -16,15 +16,17 @@ export const columns = [
     accessorKey: "PID",
     header: "PID",
     cell: (row) => {
-      return <span style={{ color: "#808080" }}>#{row?.row?.id}</span>;
+      return (
+        <span style={{ color: "#808080" }}>#{Number(row?.row?.id) + 1}</span>
+      );
     },
   },
   {
-    accessorKey: "Name",
+    accessorKey: "username",
     header: "Name",
   },
   {
-    accessorKey: "Ph_no_Watsapp",
+    accessorKey: "phoneNumber",
     header: "Ph. no/Watsapp",
   },
   {

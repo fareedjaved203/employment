@@ -9,7 +9,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-const DetailsModal = () => {
+const DetailsModal = ({ data }) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -47,7 +47,7 @@ const DetailsModal = () => {
               >
                 Name
               </div>
-              <div className="w-full md:w-1/2 p-3">Aisha Ali</div>
+              <div className="w-full md:w-1/2 p-3">{data?.username}</div>
             </div>
             <div className="flex flex-row border-b border-gray-300">
               <div
@@ -56,7 +56,7 @@ const DetailsModal = () => {
               >
                 Ph. no/Watsapp
               </div>
-              <div className="w-full md:w-1/2 p-3 ">0515571816</div>
+              <div className="w-full md:w-1/2 p-3 ">{data?.phoneNumber}</div>
             </div>
             <div className="flex flex-row border-b border-gray-300">
               <div
@@ -65,7 +65,7 @@ const DetailsModal = () => {
               >
                 Nationality
               </div>
-              <div className="w-full md:w-1/2 p-3">Pakistani</div>
+              <div className="w-full md:w-1/2 p-3">{data?.nationality}</div>
             </div>
             <div className="flex flex-row border-b border-gray-300">
               <div
@@ -74,7 +74,9 @@ const DetailsModal = () => {
               >
                 Place of Residence
               </div>
-              <div className="w-full md:w-1/2 p-3">Mecca</div>
+              <div className="w-full md:w-1/2 p-3">
+                {data?.placeOfResidence}
+              </div>
             </div>
             <div className="flex flex-row border-b border-gray-300">
               <div
@@ -83,7 +85,9 @@ const DetailsModal = () => {
               >
                 NOTTP
               </div>
-              <div className="w-full md:w-1/2 p-3">0</div>
+              <div className="w-full md:w-1/2 p-3">
+                {data?.numberOfTimesTransferredPreviously}
+              </div>
             </div>
             <div className="flex flex-row border-b border-gray-300">
               <div
@@ -92,7 +96,9 @@ const DetailsModal = () => {
               >
                 Remaining Period of Stay
               </div>
-              <div className="w-full md:w-1/2 p-3">3 years and 8 months</div>
+              <div className="w-full md:w-1/2 p-3">
+                {data.remainingPeriodOfIqama}
+              </div>
             </div>
             <div className="flex flex-row">
               <div
@@ -101,7 +107,7 @@ const DetailsModal = () => {
               >
                 Occupation
               </div>
-              <div className="w-full md:w-1/2 p-3">House keeper</div>
+              <div className="w-full md:w-1/2 p-3">{data?.occupation}</div>
             </div>
           </div>
         </div>

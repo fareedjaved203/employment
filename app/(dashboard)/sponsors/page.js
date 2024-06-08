@@ -1,26 +1,14 @@
+import { getSponsors } from "@/firebase/sponsor";
 import { Payment, columns } from "./columns";
 import DataTable from "@/components/shared/DataTable";
 
-// Fetch data from your API here.
-const data = [];
-
-for (let i = 0; i < 60; i++) {
-  const newObject = {
-    PID: data.length + 1,
-    Name: "New Person " + (i + 1),
-    Ph_no_Watsapp: "New Phone Number " + (i + 1),
-    People_Hired: "New Nationality " + (i + 1),
-    Commision_Paid: "Commision Paid " + (i + 1),
-  };
-  data.push(newObject);
-}
-
 const sponsors = async (pageNo = 1) => {
+  const sponsor = await getSponsors();
   const limit = 10;
   const startIndex = (pageNo - 1) * limit;
   const endIndex = startIndex + limit;
-  const slicedData = data.slice(startIndex, endIndex);
-  const totalPages = Math.ceil(data.length / limit);
+  const slicedData = sponsor.slice(startIndex, endIndex);
+  const totalPages = Math.ceil(sponsor.length / limit);
 
   return {
     data: slicedData,
@@ -28,7 +16,7 @@ const sponsors = async (pageNo = 1) => {
       pageNo,
       limit,
       totalPages,
-      totalRecords: data.length,
+      totalRecords: sponsor.length,
     },
   };
 };
