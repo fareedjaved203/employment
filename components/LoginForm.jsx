@@ -27,7 +27,6 @@ const LoginForm = () => {
           token: data.user?.accessToken,
         };
         createUser(user);
-        // dispatch(onLogin(data));
         toast.success("user logged in");
         setTimeout(() => {
           router.push("/");
