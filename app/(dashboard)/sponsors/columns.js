@@ -8,6 +8,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { deleteSponsor } from "@/firebase/sponsor";
 import { MoreHorizontal } from "lucide-react";
 import { CiCircleChevDown } from "react-icons/ci";
 
@@ -30,17 +31,31 @@ export const columns = [
     header: "Ph. no/Watsapp",
   },
   {
-    accessorKey: "People_Hired",
+    accessorKey: "peopleHired",
     header: "People Hired",
+    cell: (row) => {
+      return (
+        <span className="flex md:justify-center md:items-center md:w-1/2">
+          {row?.row?.original?.peopleHired}
+        </span>
+      );
+    },
   },
   {
-    accessorKey: "Commision_Paid",
+    accessorKey: "commission",
     header: "Commision Paid",
+    cell: (row) => {
+      return (
+        <span className="flex justify-center items-center md:w-1/2">
+          {row?.row?.original?.commission} SAR
+        </span>
+      );
+    },
   },
   {
     accessorKey: "Actions",
     cell: ({ row }) => {
-      // console.log(row.original);
+      console.log(row.id);
 
       return (
         <DropdownMenu>
@@ -60,6 +75,7 @@ export const columns = [
             <Button
               className="bg-[#D3175233] w-full rounded-md mb-2"
               style={{ color: "#D31752" }}
+              onClick={() => deleteSponsor(row.original.id)}
             >
               Delete User
             </Button>

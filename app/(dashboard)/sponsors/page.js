@@ -22,10 +22,9 @@ const sponsors = async (pageNo = 1) => {
 };
 
 async function SponsorsPage({ searchParams }) {
-  console.log(searchParams);
   const { page } = searchParams;
   const { data, pagination } = await sponsors(page);
-  console.log("pagination:", pagination);
+  console.log(data);
   return (
     <div
       className="container mx-auto py-7 rounded-xl pl-6 mb-4"
