@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const Stats = () => {
+const Stats = ({ sponsors }) => {
   return (
     <div
       className="mt-4 p-4 font-mulish text-center sm:text-start"
@@ -54,7 +54,9 @@ const Stats = () => {
               className="text-lg leading-6 tracking-wider"
               style={{ fontWeight: 400, color: "#00261C" }}
             >
-              2000 SAR
+              {sponsors.reduce((acc, sponsor) => acc + sponsor.commission, 0) /
+                sponsors.length}{" "}
+              SAR
             </div>
           </div>
         </div>
