@@ -3,7 +3,6 @@ import Image from "next/image";
 const Stats = ({ sponsors, earnings }) => {
   earnings.forEach((item) => {
     if (item.date.toDate) {
-      // Convert Firebase Timestamp to Unix timestamp
       item.date = item.date.toDate().getTime();
       item.month = new Date(item.date).toLocaleString("default", {
         month: "long",
@@ -18,9 +17,6 @@ const Stats = ({ sponsors, earnings }) => {
   const minEarning = earnings.reduce((prev, current) => {
     return prev.amount < current.amount ? prev : current;
   }).month;
-
-  console.log("max: ", maxEarning);
-  console.log("min: ", minEarning);
 
   return (
     <div

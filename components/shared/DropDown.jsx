@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -10,8 +10,12 @@ import {
 } from "@radix-ui/react-dropdown-menu";
 import { FaAngleDown } from "react-icons/fa6";
 
-const MyDropdownMenu = () => {
+const MyDropdownMenu = ({ setFilter }) => {
   const [position, setPosition] = useState("monthly");
+
+  useEffect(() => {
+    setFilter(position);
+  }, [position]);
 
   return (
     <DropdownMenu>

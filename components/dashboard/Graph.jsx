@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { groupBy, sumBy, map } from "lodash";
 import {
   BarChart,
   Bar,
@@ -22,20 +23,84 @@ const CustomBar = (props) => {
 };
 
 const Graph = ({ earnings }) => {
-  const [data, setData] = useState([
-    { name: "JAN", uv: 4000 },
-    { name: "FEB", uv: 3000 },
-    { name: "MAR", uv: 2000 },
-    { name: "APR", uv: 2780 },
-    { name: "MAY", uv: 1890 },
-    { name: "JUN", uv: 2390 },
-    { name: "JUL", uv: 3490 },
-    { name: "AUG", uv: 2000 },
-    { name: "SEP", uv: 2780 },
-    { name: "OCT", uv: 1890 },
-    { name: "NOV", uv: 1500 },
-    { name: "DEC", uv: 2390 },
-  ]);
+  const [data, setData] = useState([]);
+
+  const [filter, setFilter] = useState("monthly");
+
+  useEffect(() => {
+    let processedData;
+
+    switch (filter) {
+      case "weekly":
+        // Process data for weekly view
+        processedData = processWeeklyData(earnings);
+        break;
+      case "monthly":
+        // Process data for monthly view
+        processedData = processMonthlyData(earnings);
+        break;
+      case "yearly":
+        // Process data for yearly view
+        processedData = processYearlyData(earnings);
+        break;
+    }
+
+    setData(processedData);
+  }, [earnings, filter]);
+
+  const processWeeklyData = (earnings) => {
+    // Group earnings by week of the year
+    const grouped = groupBy(earnings, (item) => {
+      if (item.date && typeof item.date.toDate === "function") {
+        const date = new Date(item.date.toDate());
+        const weekOfYear = Math.floor(
+          date.getTime() / (1000 * 60 * 60 * 24 * 7)
+        );
+        return weekOfYear;
+      }
+      return null;
+    });
+
+    // Calculate total earnings for each week
+    return map(grouped, (items, week) => ({
+      name: `Week ${week}`,
+      uv: sumBy(items, "amount"),
+    }));
+  };
+
+  const processMonthlyData = (earnings) => {
+    // Group earnings by month
+    const grouped = groupBy(earnings, (item) => {
+      if (item.date && typeof item.date.toDate === "function") {
+        const date = new Date(item.date.toDate());
+        return date.toLocaleString("default", { month: "long" });
+      }
+      return null;
+    });
+
+    // Calculate total earnings for each month
+    return map(grouped, (items, month) => ({
+      name: month,
+      uv: sumBy(items, "amount"),
+    }));
+  };
+
+  const processYearlyData = (earnings) => {
+    // Group earnings by year
+    const grouped = groupBy(earnings, (item) => {
+      if (item.date && typeof item.date.toDate === "function") {
+        const date = new Date(item.date.toDate());
+        return date.getFullYear();
+      }
+      return null;
+    });
+
+    // Calculate total earnings for each year
+    return map(grouped, (items, year) => ({
+      name: year,
+      uv: sumBy(items, "amount"),
+    }));
+  };
 
   return (
     <div style={{ backgroundColor: "white" }} className="p-0 sm:p-4">
@@ -49,7 +114,7 @@ const Graph = ({ earnings }) => {
               Earnings
             </div>
             <div>
-              <MyDropdownMenu />
+              <MyDropdownMenu setFilter={setFilter} />
             </div>
           </div>
         </div>
