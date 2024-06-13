@@ -26,7 +26,7 @@ const LoginForm = () => {
           email: data.user.email,
           token: data.user?.accessToken,
         };
-        createUser(user);
+        await createUser(user);
         toast.success("user logged in");
         setTimeout(() => {
           router.push("/");

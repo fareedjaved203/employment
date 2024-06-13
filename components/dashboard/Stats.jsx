@@ -1,29 +1,74 @@
 import Image from "next/image";
 
 const Stats = ({ sponsors, earnings }) => {
+  const firestoreTimestampToDate = (timestamp) => {
+    const seconds = timestamp.seconds;
+    const nanoseconds = timestamp.nanoseconds;
+    return new Date(seconds * 1000 + nanoseconds / 1000000);
+  };
+
+  const getMonthName = (timestamp) => {
+    const date = firestoreTimestampToDate(timestamp);
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    const monthNumber = date.getMonth();
+    return monthNames[monthNumber];
+  };
+
+  const getYear = (timestamp) => {
+    const date = firestoreTimestampToDate(timestamp);
+    return date.getFullYear();
+  };
+
+  let months = [];
   earnings.forEach((item) => {
-    if (item.date.toDate) {
-      item.date = item.date.toDate().getTime();
-      item.month = new Date(item.date).toLocaleString("default", {
-        month: "long",
+    const monthIndex = months.findIndex(
+      (existingMonth) =>
+        existingMonth.month === getMonthName(item.date) &&
+        existingMonth.year === getYear(item.date)
+    );
+    if (monthIndex !== -1) {
+      months[monthIndex].amount += item.amount;
+    } else {
+      months.push({
+        month: getMonthName(item.date),
+        year: getYear(item.date),
+        amount: item.amount,
       });
     }
   });
 
-  const maxEarning = earnings.reduce((prev, current) => {
-    return prev.amount > current.amount ? prev : current;
-  }).month;
+  const maxEarning = months.reduce(
+    (max, obj) => (obj.amount > max.amount ? obj : max),
+    months[0]
+  );
 
-  const minEarning = earnings.reduce((prev, current) => {
-    return prev.amount < current.amount ? prev : current;
-  }).month;
+  const minEarning = months.reduce((max, item) => {
+    return item.amount < max.amount ? item : max;
+  }, months[0]);
 
   return (
     <div
       className="mt-4 p-4 font-mulish text-center sm:text-start"
       style={{ backgroundColor: "white" }}
     >
-      <div className="pb-1" style={{ fontSize: "28px", fontWeight: "900" }}>
+      <div
+        className="pb-1 pl-1"
+        style={{ fontSize: "28px", fontWeight: "900" }}
+      >
         Statistics
       </div>
       <div className="flex flex-col sm:flex-row space-x-2 w-[100%] md:w-[60vw]">
@@ -39,7 +84,10 @@ const Stats = ({ sponsors, earnings }) => {
             className="mx-2 my-4 sm:my-0"
           />
           <div className="flex flex-col w-[65%] px-2">
-            <div className="text-sm" style={{ color: "#333333" }}>
+            <div
+              className="text-sm whitespace-nowrap"
+              style={{ color: "#333333" }}
+            >
               Max Earnings (month)
             </div>
 
@@ -47,7 +95,7 @@ const Stats = ({ sponsors, earnings }) => {
               className="text-lg break-words"
               style={{ fontWeight: 400, color: "#00261C" }}
             >
-              {maxEarning}
+              {maxEarning.month} {maxEarning.year}
             </div>
           </div>
         </div>
@@ -97,7 +145,7 @@ const Stats = ({ sponsors, earnings }) => {
               className="text-lg leading-6 tracking-wider"
               style={{ fontWeight: 400, color: "#00261C" }}
             >
-              {minEarning}
+              {minEarning.month} {minEarning.year}
             </div>
           </div>
         </div>

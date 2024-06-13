@@ -31,7 +31,7 @@ const Graph = ({ earnings }) => {
     let processedData;
 
     switch (filter) {
-      case "weekly":
+      case "daily":
         processedData = processWeeklyData(earnings);
         break;
       case "monthly":
@@ -74,7 +74,7 @@ const Graph = ({ earnings }) => {
   const getDayOfWeek = (timestamp) => {
     const date = firestoreTimestampToDate(timestamp);
     const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    const dayOfWeek = date.getDay(); // Returns a number (0-6) representing the day of the week
+    const dayOfWeek = date.getDay();
     return dayNames[dayOfWeek];
   };
 
@@ -163,7 +163,7 @@ const Graph = ({ earnings }) => {
 
   return (
     <div style={{ backgroundColor: "white" }} className="p-0 sm:p-4">
-      <div className="flex flex-col sm:flex-row justify-between p-4 font-mulish">
+      <div className="flex flex-col sm:flex-row justify-between p-4 pl-0 font-mulish">
         <div className="flex flex-col sm:flex-row justify-between w-full">
           <div className="flex justify-center items-center">
             <div

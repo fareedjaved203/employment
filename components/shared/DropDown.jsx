@@ -37,9 +37,9 @@ const MyDropdownMenu = ({ setFilter }) => {
         >
           <DropdownMenuRadioItem
             className="outline-none cursor-pointer"
-            value="weekly"
+            value="daily"
           >
-            Weekly
+            Daily
           </DropdownMenuRadioItem>
           <DropdownMenuRadioItem
             className="outline-none cursor-pointer"
