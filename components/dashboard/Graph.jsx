@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import { groupBy, sumBy, map } from "lodash";
 import {
   BarChart,
   Bar,
@@ -24,6 +23,7 @@ const CustomBar = (props) => {
 
 const Graph = ({ earnings }) => {
   const [data, setData] = useState([]);
+  const [maxValue, setMaxValue] = useState(0);
 
   const [filter, setFilter] = useState("monthly");
 
@@ -32,15 +32,12 @@ const Graph = ({ earnings }) => {
 
     switch (filter) {
       case "weekly":
-        // Process data for weekly view
         processedData = processWeeklyData(earnings);
         break;
       case "monthly":
-        // Process data for monthly view
         processedData = processMonthlyData(earnings);
         break;
       case "yearly":
-        // Process data for yearly view
         processedData = processYearlyData(earnings);
         break;
     }
@@ -48,58 +45,120 @@ const Graph = ({ earnings }) => {
     setData(processedData);
   }, [earnings, filter]);
 
+  const firestoreTimestampToDate = (timestamp) => {
+    const seconds = timestamp.seconds;
+    const nanoseconds = timestamp.nanoseconds;
+    return new Date(seconds * 1000 + nanoseconds / 1000000);
+  };
+
+  const getMonthName = (timestamp) => {
+    const date = firestoreTimestampToDate(timestamp);
+    const monthNames = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+    const monthNumber = date.getMonth();
+    return monthNames[monthNumber];
+  };
+
+  const getDayOfWeek = (timestamp) => {
+    const date = firestoreTimestampToDate(timestamp);
+    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const dayOfWeek = date.getDay(); // Returns a number (0-6) representing the day of the week
+    return dayNames[dayOfWeek];
+  };
+
+  const getYear = (timestamp) => {
+    const date = firestoreTimestampToDate(timestamp);
+    return date.getFullYear();
+  };
+
   const processWeeklyData = (earnings) => {
-    // Group earnings by week of the year
-    const grouped = groupBy(earnings, (item) => {
-      if (item.date && typeof item.date.toDate === "function") {
-        const date = new Date(item.date.toDate());
-        const weekOfYear = Math.floor(
-          date.getTime() / (1000 * 60 * 60 * 24 * 7)
-        );
-        return weekOfYear;
-      }
-      return null;
+    let days = [];
+    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    dayNames.forEach((dayName) => {
+      days.push({ name: dayName, uv: 0 });
     });
 
-    // Calculate total earnings for each week
-    return map(grouped, (items, week) => ({
-      name: `Week ${week}`,
-      uv: sumBy(items, "amount"),
-    }));
+    earnings.forEach((earning) => {
+      const dayOfWeek = getDayOfWeek(earning.date);
+      const dayIndex = days.findIndex((day) => day.name === dayOfWeek);
+      if (dayIndex !== -1) {
+        days[dayIndex].uv += earning.amount;
+      }
+    });
+
+    const uvValues = days.map((day) => day.uv);
+    const maxUV = Math.max(...uvValues);
+    setMaxValue(maxUV);
+
+    return days;
   };
 
   const processMonthlyData = (earnings) => {
-    // Group earnings by month
-    const grouped = groupBy(earnings, (item) => {
-      if (item.date && typeof item.date.toDate === "function") {
-        const date = new Date(item.date.toDate());
-        return date.toLocaleString("default", { month: "long" });
-      }
-      return null;
+    let months = [];
+
+    const monthNames = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+
+    monthNames.forEach((monthName) => {
+      months.push({ name: monthName, uv: 0 });
     });
 
-    // Calculate total earnings for each month
-    return map(grouped, (items, month) => ({
-      name: month,
-      uv: sumBy(items, "amount"),
-    }));
+    earnings.forEach((earning) => {
+      const dayOfWeek = getMonthName(earning.date);
+      const dayIndex = months.findIndex((day) => day.name === dayOfWeek);
+      if (dayIndex !== -1) {
+        months[dayIndex].uv += earning.amount;
+      }
+    });
+
+    const uvValues = months.map((day) => day.uv);
+    const maxUV = Math.max(...uvValues);
+    setMaxValue(maxUV);
+
+    return months;
   };
 
   const processYearlyData = (earnings) => {
-    // Group earnings by year
-    const grouped = groupBy(earnings, (item) => {
-      if (item.date && typeof item.date.toDate === "function") {
-        const date = new Date(item.date.toDate());
-        return date.getFullYear();
+    let years = [];
+    earnings.forEach((earning) => {
+      const dayOfWeek = getYear(earning.date);
+      const existingDayIndex = years.findIndex((day) => day.name === dayOfWeek);
+      if (existingDayIndex !== -1) {
+        years[existingDayIndex].uv += earning.amount;
+      } else {
+        years.push({ name: dayOfWeek, uv: earning.amount });
       }
-      return null;
     });
 
-    // Calculate total earnings for each year
-    return map(grouped, (items, year) => ({
-      name: year,
-      uv: sumBy(items, "amount"),
-    }));
+    const uvValues = years.map((day) => day.uv);
+    const maxUV = Math.max(...uvValues);
+    setMaxValue(maxUV);
+
+    return years;
   };
 
   return (
@@ -132,7 +191,7 @@ const Graph = ({ earnings }) => {
             />
             <YAxis
               type="number"
-              domain={[0, 4000]}
+              domain={[0, maxValue + 500]}
               axisLine={false}
               tickFormatter={(tick) => {
                 if (tick === 0) return "0";
@@ -144,7 +203,7 @@ const Graph = ({ earnings }) => {
               padding={{ top: 10, bottom: 10 }}
             />
 
-            <Tooltip />
+            <Tooltip formatter={(value) => [`Amount: ${value}`]} />
             <Bar
               dataKey="uv"
               fill="#D31752"
