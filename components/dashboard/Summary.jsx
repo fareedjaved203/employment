@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const Summary = async ({ jobs, sponsors, users }) => {
+const Summary = async ({ jobs, sponsors, users, earnings }) => {
   return (
     <>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full font-mulish my-4">
@@ -22,7 +22,7 @@ const Summary = async ({ jobs, sponsors, users }) => {
             className="text-2xl font-bold pb-2 mb-2 font-mulish"
             style={{ fontSize: "32px", fontWeight: 900 }}
           >
-            {sponsors.reduce((acc, sponsor) => acc + sponsor.commission, 0)}
+            {earnings.reduce((acc, earning) => acc + earning.amount, 0)}
 
             <span className="text-pinkColor"> SAR</span>
           </div>

@@ -21,7 +21,7 @@ const CustomBar = (props) => {
   );
 };
 
-const Graph = () => {
+const Graph = ({ earnings }) => {
   const [data, setData] = useState([
     { name: "JAN", uv: 4000 },
     { name: "FEB", uv: 3000 },

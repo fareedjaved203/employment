@@ -1,6 +1,27 @@
 import Image from "next/image";
 
-const Stats = ({ sponsors }) => {
+const Stats = ({ sponsors, earnings }) => {
+  earnings.forEach((item) => {
+    if (item.date.toDate) {
+      // Convert Firebase Timestamp to Unix timestamp
+      item.date = item.date.toDate().getTime();
+      item.month = new Date(item.date).toLocaleString("default", {
+        month: "long",
+      });
+    }
+  });
+
+  const maxEarning = earnings.reduce((prev, current) => {
+    return prev.amount > current.amount ? prev : current;
+  }).month;
+
+  const minEarning = earnings.reduce((prev, current) => {
+    return prev.amount < current.amount ? prev : current;
+  }).month;
+
+  console.log("max: ", maxEarning);
+  console.log("min: ", minEarning);
+
   return (
     <div
       className="mt-4 p-4 font-mulish text-center sm:text-start"
@@ -30,7 +51,7 @@ const Stats = ({ sponsors }) => {
               className="text-lg break-words"
               style={{ fontWeight: 400, color: "#00261C" }}
             >
-              March
+              {maxEarning}
             </div>
           </div>
         </div>
@@ -54,8 +75,8 @@ const Stats = ({ sponsors }) => {
               className="text-lg leading-6 tracking-wider"
               style={{ fontWeight: 400, color: "#00261C" }}
             >
-              {sponsors.reduce((acc, sponsor) => acc + sponsor.commission, 0) /
-                sponsors.length}{" "}
+              {earnings.reduce((acc, earning) => acc + earning.amount, 0) /
+                earnings.length}{" "}
               SAR
             </div>
           </div>
@@ -80,7 +101,7 @@ const Stats = ({ sponsors }) => {
               className="text-lg leading-6 tracking-wider"
               style={{ fontWeight: 400, color: "#00261C" }}
             >
-              October
+              {minEarning}
             </div>
           </div>
         </div>
