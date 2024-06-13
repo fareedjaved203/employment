@@ -1,4 +1,5 @@
 "use client";
+import { getId, setId } from "@/app/actions/cookies";
 import DetailsModal from "@/components/DetailsModal";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,8 +9,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { deleteJobSeeker } from "@/firebase/jobSeeker";
 import { CiCircleChevDown } from "react-icons/ci";
+
+const removeJob = async (id) => {
+  await deleteJobSeeker(id);
+};
 
 export const columns = [
   {
@@ -68,7 +72,7 @@ export const columns = [
             <Button
               className="bg-[#D3175233] w-full rounded-md mb-2"
               style={{ color: "#D31752" }}
-              onClick={() => deleteJobSeeker(row.original?.id)}
+              onClick={() => removeJob(row.original?.id)}
             >
               Delete User
             </Button>

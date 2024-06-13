@@ -10,6 +10,19 @@ export async function createUser(data) {
   });
 }
 
+export async function setId(id) {
+  const oneDay = 24 * 60 * 60 * 1000;
+  cookies().set("id", id, {
+    expires: new Date(Date.now() + oneDay),
+    secure: true,
+  });
+}
+
+export async function getId() {
+  const data = cookies().get("id");
+  return data;
+}
+
 export async function deleteUser() {
   cookies().delete("user");
 }

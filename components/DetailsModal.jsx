@@ -29,7 +29,7 @@ const DetailsModal = ({ data }) => {
         </DialogHeader>
         <div className="overflow-x-auto px-4 mb-3">
           <div className="shadow-xl">
-            <div className="flex flex-row border-b border-gray-300">
+            {/* <div className="flex flex-row border-b border-gray-300">
               <div
                 className="w-full md:w-1/2 p-3 bg-pinkColor"
                 style={{ color: "white" }}
@@ -39,7 +39,7 @@ const DetailsModal = ({ data }) => {
               <div className="w-full md:w-1/2 p-3" style={{ color: "#999999" }}>
                 #123
               </div>
-            </div>
+            </div> */}
             <div className="flex flex-row border-b border-gray-300">
               <div
                 className="w-full md:w-1/2 p-3 bg-pinkColor"

@@ -1,5 +1,5 @@
 import { getJobSeekers } from "@/firebase/jobSeeker";
-import { Payment, columns } from "./columns";
+import { columns } from "./columns";
 import DataTable from "@/components/shared/DataTable";
 
 const jobSeekers = async (pageNo = 1) => {

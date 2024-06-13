@@ -3,14 +3,16 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { deleteSponsor } from "@/firebase/sponsor";
-import { MoreHorizontal } from "lucide-react";
 import { CiCircleChevDown } from "react-icons/ci";
+
+const removeSponsor = async (id) => {
+  await deleteSponsor(id);
+};
 
 export const columns = [
   {
@@ -75,7 +77,7 @@ export const columns = [
             <Button
               className="bg-[#D3175233] w-full rounded-md mb-2"
               style={{ color: "#D31752" }}
-              onClick={() => deleteSponsor(row.original.id)}
+              onClick={() => removeSponsor(row.original.id)}
             >
               Delete User
             </Button>

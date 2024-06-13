@@ -1,5 +1,5 @@
 import { getSponsors } from "@/firebase/sponsor";
-import { Payment, columns } from "./columns";
+import { columns, sponsorId } from "./columns";
 import DataTable from "@/components/shared/DataTable";
 
 const sponsors = async (pageNo = 1) => {
