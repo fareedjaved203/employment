@@ -1,5 +1,5 @@
 import { getJobSeekers } from "@/firebase/jobSeeker";
-import { columns } from "./columns";
+import { columns, removeJob } from "./columns";
 import DataTable from "@/components/shared/DataTable";
 
 const jobSeekers = async (pageNo = 1) => {
@@ -22,8 +22,10 @@ const jobSeekers = async (pageNo = 1) => {
 };
 
 async function JobSeekersPage({ searchParams }) {
+  console.log("id is: ", removeJob);
   const { page } = searchParams;
   const { data, pagination } = await jobSeekers(page);
+
   return (
     <div
       className="container mx-auto py-7 rounded-xl pl-6 mb-4"

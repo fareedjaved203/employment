@@ -119,8 +119,10 @@ const Stats = ({ sponsors, earnings }) => {
               className="text-lg leading-6 tracking-wider"
               style={{ fontWeight: 400, color: "#00261C" }}
             >
-              {earnings.reduce((acc, earning) => acc + earning.amount, 0) /
-                earnings.length}{" "}
+              {(
+                earnings.reduce((acc, earning) => acc + earning.amount, 0) /
+                earnings.length
+              ).toFixed(2)}{" "}
               SAR
             </div>
           </div>

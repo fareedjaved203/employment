@@ -20,7 +20,6 @@ const LoginForm = () => {
     setLoading(true);
     try {
       const data = await doSignInWithEmailAndPassword(email, password);
-      console.log(data);
       if (data) {
         const user = {
           email: data.user.email,
@@ -30,7 +29,7 @@ const LoginForm = () => {
         toast.success("user logged in");
         setTimeout(() => {
           router.push("/");
-        }, 500);
+        }, 1000);
       } else {
         toast.error("Incorrect email/password");
       }

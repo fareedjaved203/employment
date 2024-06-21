@@ -1,5 +1,5 @@
 import { getSponsors } from "@/firebase/sponsor";
-import { columns, sponsorId } from "./columns";
+import { columns } from "./columns";
 import DataTable from "@/components/shared/DataTable";
 
 const sponsors = async (pageNo = 1) => {
@@ -24,7 +24,6 @@ const sponsors = async (pageNo = 1) => {
 async function SponsorsPage({ searchParams }) {
   const { page } = searchParams;
   const { data, pagination } = await sponsors(page);
-  console.log(data);
   return (
     <div
       className="container mx-auto py-7 rounded-xl pl-6 mb-4"

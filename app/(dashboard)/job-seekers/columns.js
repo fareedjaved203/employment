@@ -9,10 +9,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { deleteJobSeeker } from "@/firebase/jobSeeker";
+import toast from "react-hot-toast";
 import { CiCircleChevDown } from "react-icons/ci";
 
-const removeJob = async (id) => {
+export const removeJob = async (id) => {
   await deleteJobSeeker(id);
+  toast.success("Deleted Successfully");
 };
 
 export const columns = [
@@ -48,7 +51,7 @@ export const columns = [
   {
     accessorKey: "Actions",
     cell: ({ row }) => {
-      console.log(row.original);
+      // console.log(row.original);
 
       return (
         <DropdownMenu>

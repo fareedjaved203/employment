@@ -8,10 +8,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { deleteSponsor } from "@/firebase/sponsor";
+import toast from "react-hot-toast";
 import { CiCircleChevDown } from "react-icons/ci";
 
 const removeSponsor = async (id) => {
   await deleteSponsor(id);
+  toast.success("Deleted Successfully");
 };
 
 export const columns = [
@@ -57,7 +59,7 @@ export const columns = [
   {
     accessorKey: "Actions",
     cell: ({ row }) => {
-      console.log(row.id);
+      // console.log(row.id);
 
       return (
         <DropdownMenu>

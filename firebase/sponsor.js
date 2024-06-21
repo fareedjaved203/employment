@@ -1,3 +1,4 @@
+"use server";
 import {
   getFirestore,
   collection,
@@ -6,7 +7,7 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import { app } from "./firebase";
-import toast from "react-hot-toast";
+import { revalidatePath } from "next/cache";
 
 const db = getFirestore(app);
 
@@ -26,13 +27,11 @@ export async function getSponsors() {
 }
 
 export async function deleteSponsor(id) {
-  console.log("id is: ", id);
   const sponsorDoc = doc(db, "Sponsor", id);
-  console.log("test: ", sponsorDoc);
   try {
     await deleteDoc(sponsorDoc);
     console.log("Document deleted");
-    toast.success("Deleted Successfully");
+    revalidatePath("/sponsors");
   } catch (error) {
     console.error("Error deleting document: ", error);
   }
