@@ -28,8 +28,10 @@ export async function getSponsors() {
 
 export async function deleteSponsor(id) {
   const sponsorDoc = doc(db, "Sponsor", id);
+  const userDoc = doc(db, "Authentications", id);
   try {
     await deleteDoc(sponsorDoc);
+    await deleteDoc(userDoc);
     console.log("Document deleted");
     revalidatePath("/sponsors");
   } catch (error) {

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { doSignInWithEmailAndPassword } from "@/firebase/auth";
 import toast from "react-hot-toast";
-import { createUser } from "@/app/actions/cookies";
+import { createUser, getUser } from "@/app/actions/cookies";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -26,14 +26,18 @@ const LoginForm = () => {
           token: data.user?.accessToken,
         };
         await createUser(user);
-        toast.success("user logged in");
-        setTimeout(() => {
-          router.push("/");
-        }, 1000);
+        const storedUser = await getUser();
+        if (storedUser) {
+          toast.success("user logged in");
+          setTimeout(() => {
+            router.push("/");
+          }, 1000);
+        }
       } else {
         toast.error("Incorrect email/password");
       }
     } catch (error) {
+      console.log(error);
       toast.error("Incorrect email/password");
     }
     setLoading(false);

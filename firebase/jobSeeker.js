@@ -29,8 +29,10 @@ export async function getJobSeekers() {
 
 export async function deleteJobSeeker(id) {
   const jobSeekerDoc = doc(db, "JobSeeker", id);
+  const userDoc = doc(db, "Authentications", id);
   try {
     await deleteDoc(jobSeekerDoc);
+    await deleteDoc(userDoc);
     console.log("Document deleted");
     revalidatePath("/job-seekers");
   } catch (error) {
