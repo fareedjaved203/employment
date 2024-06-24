@@ -4,12 +4,14 @@ import { doSignOut } from "@/firebase/auth";
 import { useRouter } from "next/navigation";
 import { IoArrowBack } from "react-icons/io5";
 import { deleteUser } from "@/app/actions/cookies";
+import toast from "react-hot-toast";
 
 const LogoutBtn = () => {
   const router = useRouter();
   const logout = async () => {
     await doSignOut();
     await deleteUser();
+    toast.success("Logged Out Successfully");
     router.push("/auth/login");
   };
   return (

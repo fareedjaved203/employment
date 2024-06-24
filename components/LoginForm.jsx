@@ -29,9 +29,7 @@ const LoginForm = () => {
         const storedUser = await getUser();
         if (storedUser) {
           toast.success("user logged in");
-          setTimeout(() => {
-            router.push("/");
-          }, 1000);
+          router.push("/");
         }
       } else {
         toast.error("Incorrect email/password");
